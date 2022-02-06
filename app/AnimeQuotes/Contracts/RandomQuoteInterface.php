@@ -6,5 +6,5 @@ use GuzzleHttp\Client;
 
 interface RandomQuoteInterface
 {
-    public function fetch(Client $client);
+    public function fetch();
 }

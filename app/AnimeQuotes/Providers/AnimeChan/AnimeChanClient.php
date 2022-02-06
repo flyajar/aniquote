@@ -8,9 +8,16 @@ use GuzzleHttp\Client;
 
 class AnimeChanClient implements RandomQuoteInterface
 {
-    public function fetch(Client $client)
+    protected Client $client;
+
+    public function __construct(Client $client)
     {
-        $response = $client->get(config('animechan.base_url') . 'random');
+        $this->client = $client;
+    }
+
+    public function fetch()
+    {
+        $response = $this->client->get('random');
 
         return json_decode($response->getBody());
     }
